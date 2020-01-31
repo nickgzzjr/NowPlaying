@@ -1,0 +1,32 @@
+PODS:
+  - Movin (1.2.0)
+  - SnapKit (5.0.1)
+  - Vaccine (0.15.1)
+
+DEPENDENCIES:
+  - "Movin (from `git@github.com:nickgzzjr/Movin.git`)"
+  - SnapKit
+  - Vaccine
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
+    - Vaccine
+
+EXTERNAL SOURCES:
+  Movin:
+    :git: "git@github.com:nickgzzjr/Movin.git"
+
+CHECKOUT OPTIONS:
+  Movin:
+    :commit: fffaa61e624fcb9887cfc4d995557f305305dbdd
+    :git: "git@github.com:nickgzzjr/Movin.git"
+
+SPEC CHECKSUMS:
+  Movin: 02a488d93913e46de77774d6a2cc2fa0eec83760
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Vaccine: 9597d99f45c18f331f2c5246c0483bbe5ed119fe
+
+PODFILE CHECKSUM: 0517f69448c028ef1ada41798247668f4e3bf5fe
+
+COCOAPODS: 1.8.4
