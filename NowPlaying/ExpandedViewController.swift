@@ -7,26 +7,33 @@ import UIKit
 
 class ExpandedViewController: UIViewController {
 
+    var button: UIButton!
+
     deinit {
-        print("💥")
+        print("ExpandedViewController - 💥")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .red
+        let lineWidth: CGFloat = 36
+        let lineHeight: CGFloat = 5
+        let lineX = view.frame.width / 2 - lineWidth / 2
+        let lineMargin: CGFloat = 15
 
-    }
+        let line = UIView(frame: CGRect(x: lineX, y: 15, width: lineWidth, height: lineHeight))
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        line.backgroundColor = .systemFill
+        line.layer.cornerRadius = lineHeight / 2
 
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+        button = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: lineHeight + lineMargin * 2))
 
+        button.addSubview(line)
         button.addTarget(self, action: #selector(collapse), for: .touchUpInside)
-        button.setTitle("Collapse", for: .normal)
 
         view.addSubview(button)
+
+        view.backgroundColor = .systemGray6
 
     }
 
@@ -35,4 +42,5 @@ class ExpandedViewController: UIViewController {
         dismiss(animated: true)
 
     }
+
 }

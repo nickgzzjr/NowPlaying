@@ -10,12 +10,20 @@ import UIKit
 
 class CollapsedViewController: UIViewController {
 
+    @IBOutlet weak var playerView: PlayerView!
+    @IBOutlet weak var contentView: UIView!
+
+    deinit {
+        print("CollapsedViewController - 💥")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .green
+        view.backgroundColor = .systemGray6
+
+        playerView.play(URL(fileReferenceLiteralResourceName: "video.mp4"))
 
     }
 
 }
-

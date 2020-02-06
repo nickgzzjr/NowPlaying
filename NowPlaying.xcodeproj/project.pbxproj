@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		034ADBE623E4B335008951F8 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034ADBE523E4B335008951F8 /* PlayerView.swift */; };
 		035DCAA223E356F200AB62AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035DCAA123E356F200AB62AD /* AppDelegate.swift */; };
 		035DCAA623E356F200AB62AD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035DCAA523E356F200AB62AD /* FirstViewController.swift */; };
 		035DCAA823E356F200AB62AD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035DCAA723E356F200AB62AD /* SecondViewController.swift */; };
@@ -15,11 +16,17 @@
 		035DCAB023E356F400AB62AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035DCAAE23E356F400AB62AD /* LaunchScreen.storyboard */; };
 		035DCAB823E3580200AB62AD /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035DCAB723E3580200AB62AD /* TabBarController.swift */; };
 		035DCABA23E3583F00AB62AD /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035DCAB923E3583F00AB62AD /* CollapsedViewController.swift */; };
+		0360763923E4C56D003585B8 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0360763823E4C56D003585B8 /* video.mp4 */; };
+		3397607D8411CF1D9686F7E6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976C30EF85EA3EACC49019 /* UIViewExtension.swift */; };
 		3397684A333A175C4ECE1931 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339764DC1D8F20156840A2F4 /* ExpandedViewController.swift */; };
+		33976A46D90FFAF449CFF037 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976E4914D27470B13D6430 /* NowPlaying.swift */; };
+		33976AB4F44C24F1963817FA /* PlayerFrameAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976AB7B1258072EF004AE1 /* PlayerFrameAnimation.swift */; };
+		33976C5A813D070EF159D3C2 /* FrameKeyframeInteractiveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976FDEB92C6ACF967159F4 /* FrameKeyframeInteractiveAnimation.swift */; };
 		B61F4B8FC7DFFE1D77F080DD /* Pods_NowPlaying.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F92CD7B749D766B0BCE23F /* Pods_NowPlaying.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		034ADBE523E4B335008951F8 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		035DCA9E23E356F200AB62AD /* NowPlaying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NowPlaying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		035DCAA123E356F200AB62AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		035DCAA523E356F200AB62AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +37,13 @@
 		035DCAB123E356F400AB62AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		035DCAB723E3580200AB62AD /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		035DCAB923E3583F00AB62AD /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
+		0360763823E4C56D003585B8 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		28F92CD7B749D766B0BCE23F /* Pods_NowPlaying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NowPlaying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		339764DC1D8F20156840A2F4 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
+		33976AB7B1258072EF004AE1 /* PlayerFrameAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFrameAnimation.swift; sourceTree = "<group>"; };
+		33976C30EF85EA3EACC49019 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		33976E4914D27470B13D6430 /* NowPlaying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlaying.swift; sourceTree = "<group>"; };
+		33976FDEB92C6ACF967159F4 /* FrameKeyframeInteractiveAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameKeyframeInteractiveAnimation.swift; sourceTree = "<group>"; };
 		3737130C4006493DC3B54F83 /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		4C37A85DFF4DB89CD2C7A31F /* Pods-NowPlaying.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NowPlaying.debug.xcconfig"; path = "Target Support Files/Pods-NowPlaying/Pods-NowPlaying.debug.xcconfig"; sourceTree = "<group>"; };
 		81956897844271CE86DA9A1C /* Pods-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.release.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,13 +88,27 @@
 				035DCAA723E356F200AB62AD /* SecondViewController.swift */,
 				035DCAA923E356F200AB62AD /* Main.storyboard */,
 				035DCAAC23E356F400AB62AD /* Assets.xcassets */,
+				0360763723E4C56D003585B8 /* Resources */,
 				035DCAAE23E356F400AB62AD /* LaunchScreen.storyboard */,
 				035DCAB123E356F400AB62AD /* Info.plist */,
 				035DCAB723E3580200AB62AD /* TabBarController.swift */,
 				035DCAB923E3583F00AB62AD /* CollapsedViewController.swift */,
 				339764DC1D8F20156840A2F4 /* ExpandedViewController.swift */,
+				034ADBE523E4B335008951F8 /* PlayerView.swift */,
+				33976AB7B1258072EF004AE1 /* PlayerFrameAnimation.swift */,
+				33976FDEB92C6ACF967159F4 /* FrameKeyframeInteractiveAnimation.swift */,
+				33976E4914D27470B13D6430 /* NowPlaying.swift */,
+				33976C30EF85EA3EACC49019 /* UIViewExtension.swift */,
 			);
 			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		0360763723E4C56D003585B8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0360763823E4C56D003585B8 /* video.mp4 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		45DD65232617E32F2B52BED4 /* Pods */ = {
@@ -167,6 +193,7 @@
 				035DCAB023E356F400AB62AD /* LaunchScreen.storyboard in Resources */,
 				035DCAAD23E356F400AB62AD /* Assets.xcassets in Resources */,
 				035DCAAB23E356F200AB62AD /* Main.storyboard in Resources */,
+				0360763923E4C56D003585B8 /* video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,12 +227,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NowPlaying/Pods-NowPlaying-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NowPlaying/Pods-NowPlaying-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Movin/Movin.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Vaccine/Vaccine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NowPlaying/Pods-NowPlaying-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Movin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Vaccine.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -221,10 +253,15 @@
 			files = (
 				035DCAA823E356F200AB62AD /* SecondViewController.swift in Sources */,
 				035DCAA623E356F200AB62AD /* FirstViewController.swift in Sources */,
+				034ADBE623E4B335008951F8 /* PlayerView.swift in Sources */,
 				035DCABA23E3583F00AB62AD /* CollapsedViewController.swift in Sources */,
 				035DCAA223E356F200AB62AD /* AppDelegate.swift in Sources */,
 				035DCAB823E3580200AB62AD /* TabBarController.swift in Sources */,
 				3397684A333A175C4ECE1931 /* ExpandedViewController.swift in Sources */,
+				33976AB4F44C24F1963817FA /* PlayerFrameAnimation.swift in Sources */,
+				33976C5A813D070EF159D3C2 /* FrameKeyframeInteractiveAnimation.swift in Sources */,
+				33976A46D90FFAF449CFF037 /* NowPlaying.swift in Sources */,
+				3397607D8411CF1D9686F7E6 /* UIViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,11 +408,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XW9393FM6D;
-				INFOPLIST_FILE = Test/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				INFOPLIST_FILE = "$(SRCROOT)/NowPlaying/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.atlaswearables.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -390,11 +424,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XW9393FM6D;
-				INFOPLIST_FILE = Test/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				INFOPLIST_FILE = "$(SRCROOT)/NowPlaying/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.atlaswearables.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
