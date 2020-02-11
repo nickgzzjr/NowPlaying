@@ -7,8 +7,8 @@ import Movin
 
 public final class PlayerFrameAnimation: ValueAnimationCompatible {
 
-    public func beforeAnimation(_ isForward: Bool) {
-        currentValue = isForward ? fromValue : toValue
+    public func beforeAnimation(_ animationDirection: AnimationDirection) {
+        currentValue = animationDirection.isForward ? fromValue : toValue
     }
 
     public func animate(_ animationDirection: AnimationDirection) {
@@ -32,8 +32,6 @@ public final class PlayerFrameAnimation: ValueAnimationCompatible {
         func convert(_ from: CGFloat, _ to: CGFloat) -> CGFloat {
             (to - from) * current + from
         }
-
-        // print(convert(fromValue.minY, toValue.minY))
 
         currentValue = CGRect(
                 x: convert(fromValue.minX, toValue.minX),
@@ -74,8 +72,6 @@ public final class PlayerFrameAnimation: ValueAnimationCompatible {
     public var delayFactor: CGFloat = 0
     public var fromValue: Value
     public var toValue: Value
-    public var fromTimeInterval = 0.0
-    public var toTimeInterval = 1.0
     public var currentValue: Value {
         didSet {
             self.view.frame = self.currentValue

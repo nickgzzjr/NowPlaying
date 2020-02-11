@@ -9,6 +9,14 @@ class ExpandedViewController: UIViewController {
 
     var button: UIButton!
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if NowPlaying.shared.state == .expanding || NowPlaying.shared.state == .presenting {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
+
     deinit {
         print("ExpandedViewController - 💥")
     }
@@ -23,6 +31,7 @@ class ExpandedViewController: UIViewController {
 
         let line = UIView(frame: CGRect(x: lineX, y: 15, width: lineWidth, height: lineHeight))
 
+        line.isUserInteractionEnabled = false
         line.backgroundColor = .systemFill
         line.layer.cornerRadius = lineHeight / 2
 

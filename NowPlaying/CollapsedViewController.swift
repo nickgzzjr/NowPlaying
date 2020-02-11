@@ -13,6 +13,8 @@ class CollapsedViewController: UIViewController {
     @IBOutlet weak var playerView: PlayerView!
     @IBOutlet weak var contentView: UIView!
 
+    var showingVideo = true
+
     deinit {
         print("CollapsedViewController - 💥")
     }

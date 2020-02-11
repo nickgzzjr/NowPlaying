@@ -16,6 +16,9 @@ class NowPlaying {
     enum State {
         case appearing
         case showing
+        case expanding
+        case presenting
+        case collapsing
         case disappearing
         case hiding
     }
@@ -23,13 +26,12 @@ class NowPlaying {
     var state: State = .hiding
 
     var tabBarController: TabBarController!
-
     var movin: Movin!
-
     var tabBarScreenshot: UIImageView!
     var expandedViewDestination: CGRect!
-
     var heightConstraint: Constraint!
+
+    var duration = 0.5
 
     deinit {
         print("CollapsedExpandedTransition - 💥")
@@ -77,13 +79,13 @@ class NowPlaying {
         tabBarController.view.layoutIfNeeded()
 
         UIView.animate(
-                withDuration: 1.0,
+                withDuration: duration,
                 delay: 0,
                 usingSpringWithDamping: 0.6,
                 initialSpringVelocity: 0,
                 options: [],
                 animations: {
-                    self.heightConstraint.update(offset: 80)
+                    self.heightConstraint.update(offset: 60)
                     tabBarController.view.layoutIfNeeded()
                 },
                 completion: { _ in
@@ -107,7 +109,7 @@ class NowPlaying {
         state = .disappearing
 
         UIView.animate(
-                withDuration: 1.0,
+                withDuration: duration,
                 delay: 0,
                 usingSpringWithDamping: 0.6,
                 initialSpringVelocity: 0,
@@ -126,9 +128,15 @@ class NowPlaying {
 
     }
 
-    @objc func expand(_ sender: UITapGestureRecognizer) {
+    @objc func expand() {
 
         tabBarController.present(expandedViewController, animated: true)
+
+    }
+
+    func collapse() {
+
+        expandedViewController.collapse()
 
     }
 
@@ -138,41 +146,94 @@ class NowPlaying {
             return
         }
 
-        self.movin = Movin(1.0, TimingCurve())
+        self.movin = Movin(duration, TimingCurve())
 
         tabBarScreenshot = UIImageView(frame: tabBarController.tabBar.frame)
 
-        let frameWidth = collapsedViewController.view.frame.width
+        tabBarScreenshot.layer.shadowOpacity = 0.3
+        tabBarScreenshot.layer.shadowRadius = 0
+        tabBarScreenshot.layer.shadowOffset = CGSize(width: 0, height: -0.333)
+        tabBarScreenshot.layer.shadowColor = UIColor.systemFill.cgColor
+        tabBarScreenshot.layer.masksToBounds = false
 
-        expandedViewDestination = CGRect(x: 0, y: 54, width: frameWidth, height: tabBarController.view.frame.height - 54)
+        let frameWidth = tabBarController.view.frame.width
+        let frameHeight = tabBarController.view.frame.height
 
-        let playerWidth = frameWidth
-        let playerHeight = playerWidth * 9 / 16
-        let playerDestination = CGRect(x: 0, y: 35, width: playerWidth, height: playerHeight)
+        let expandedViewStart = CGRect(
+                origin: collapsedViewController.view.frame.origin,
+                size: CGSize(width: frameWidth, height: frameHeight - collapsedViewController.view.frame.minY)
+        )
+        expandedViewDestination = CGRect(
+                x: 0,
+                y: 54,
+                width: frameWidth,
+                height: frameHeight - 54
+        )
 
-        let contentWidth = frameWidth - 40
-        let contentHeight = collapsedViewController.contentView.frame.height
-        let contentDestination = CGRect(x: 20, y: playerHeight + 55, width: contentWidth, height: contentHeight)
+        var animations: [AnimationCompatible] = [
 
-        self.movin.addAnimations([
-            tabBarController.view.mvn.cornerRadius.from(0.0).to(10.0),
-            tabBarController.view.mvn.alpha.from(1.0).to(0.88),
-            tabBarController.view.mvn.transform.from(CGAffineTransform(scaleX: 1.0, y: 1.0)).to(CGAffineTransform(scaleX: 0.89, y: 0.89)),
-            tabBarScreenshot.mvn.point.to(CGPoint(x: 0.0, y: tabBarController.view.frame.size.height)),
-            expandedViewController.view.mvn.cornerRadius.from(0.0).to(10.0),
-            expandedViewController.view.mvn.frame.from(collapsedViewController.view.frame).to(expandedViewDestination),
-            expandedViewController.button.mvn.alpha.from(-1).to(1),
-            collapsedViewController.playerView.mvn.playerFrame.from(collapsedViewController.playerView.frame).to(playerDestination),
-            collapsedViewController.contentView.mvn.frameInteractive
-                    .from(collapsedViewController.contentView.frame)
-                    .keyframe(
-                            duration: 0.1,
-                            x: collapsedViewController.contentView.frame.minX,
-                            y: contentDestination.minY / 3,
-                            width: collapsedViewController.contentView.frame.width
-                    )
-                    .to(contentDestination),
-        ])
+            tabBarController.view.mvn.cornerRadius
+                    .from(0.0)
+                    .to(10.0),
+            tabBarController.view.mvn.alpha
+                    .from(1.0)
+                    .to(0.88),
+            tabBarController.view.mvn.transform
+                    .from(CGAffineTransform(scaleX: 1.0, y: 1.0))
+                    .to(CGAffineTransform(scaleX: 0.89, y: 0.89)),
+
+            tabBarScreenshot.mvn.point
+                    .to(CGPoint(x: 0.0, y: frameHeight)),
+            expandedViewController.view.mvn.cornerRadius
+                    .from(0.0)
+                    .to(10.0),
+            expandedViewController.view.mvn.frame
+                    .from(expandedViewStart)
+                    .to(expandedViewDestination),
+            expandedViewController.button.mvn.alpha
+                    .from(-1)
+                    .to(1)
+        ]
+
+        if collapsedViewController.showingVideo {
+
+            let playerWidth = frameWidth
+            let playerHeight = playerWidth * 9 / 16
+            let playerDestination = CGRect(x: 0, y: 35, width: playerWidth, height: playerHeight)
+
+            let contentWidth = frameWidth - 40
+            let contentHeight = collapsedViewController.contentView.frame.height
+            let contentDestination = CGRect(x: 20, y: playerHeight + 55, width: contentWidth, height: contentHeight)
+
+            animations += [
+                collapsedViewController.playerView.mvn.playerFrame
+                        .from(collapsedViewController.playerView.frame)
+                        .to(playerDestination),
+                collapsedViewController.contentView.mvn.frameInteractive
+                        .from(collapsedViewController.contentView.frame)
+                        .keyframe(
+                                duration: 0.1,
+                                x: collapsedViewController.contentView.frame.minX,
+                                y: contentDestination.minY / 3,
+                                width: collapsedViewController.contentView.frame.width
+                        )
+                        .to(contentDestination),
+            ]
+        } else {
+
+            let contentWidth = frameWidth - 40
+            let contentHeight = collapsedViewController.contentView.frame.height
+            let contentDestination = CGRect(x: 20, y: 35, width: contentWidth, height: contentHeight)
+
+            animations += [
+                collapsedViewController.contentView.mvn.frame
+                        .from(collapsedViewController.contentView.frame)
+                        .to(contentDestination)
+            ]
+
+        }
+
+        self.movin.addAnimations(animations)
 
         let presentGesture = GestureAnimating(self.collapsedViewController.view, .top, tabBarController.view.frame.size)
 
@@ -187,20 +248,24 @@ class NowPlaying {
 
         let transition = Transition(movin, tabBarController, expandedViewController, gestures)
 
-        transition.customContainerViewSetupHandler = setupExpand
-        transition.customContainerViewCompletionHandler = completeCollapse
+        transition.customContainerViewSetupHandler = setupTransition
+        transition.customContainerViewCompletionHandler = completeTransition
 
         expandedViewController.modalPresentationStyle = .overCurrentContext
+        expandedViewController.modalPresentationCapturesStatusBarAppearance = true
         expandedViewController.transitioningDelegate = movin.configureCustomTransition(transition)
 
     }
 
-    func setupExpand(_ type: TransitionType, _ containerView: UIView) {
+    func setupTransition(_ type: TransitionType, _ containerView: UIView) {
         if type.isPresenting {
+
+            state = .expanding
+
             // collapsedConstraints = collapsedViewController.view.constraints
 
+            expandedViewController.setNeedsStatusBarAppearanceUpdate()
             expandedViewController.view.frame = collapsedViewController.view.frame
-            expandedViewController.view.frame = expandedViewDestination
             expandedViewController.view.addSubview(collapsedViewController.playerView)
 
             // NSLayoutConstraint.deactivate(collapsedViewController.contentView.constraints)
@@ -214,39 +279,41 @@ class NowPlaying {
 
             collapsedViewController.view.isHidden = true
 
-            // isPresented = true
-
-            // setNeedsStatusBarAppearanceUpdate()
+        } else {
+            state = .collapsing
         }
-        tabBarController.beginAppearanceTransition(!type.isPresenting, animated: false)
-        self.expandedViewController.beginAppearanceTransition(type.isPresenting, animated: false)
+        tabBarController.beginAppearanceTransition(!type.isPresenting, animated: true)
+        self.expandedViewController.beginAppearanceTransition(type.isPresenting, animated: true)
     }
 
-    func completeCollapse(_ type: TransitionType, _ didComplete: Bool, _ containerView: UIView) {
+    func completeTransition(_ type: TransitionType, _ didComplete: Bool, _ containerView: UIView) {
         tabBarController.endAppearanceTransition()
         self.expandedViewController.endAppearanceTransition()
 
         if type.isDismissing {
             if didComplete {
                 print("complete dismiss")
+                state = .showing
                 self.completeCollapse(restart: true)
             } else {
                 print("cancel dismiss")
+                state = .presenting
             }
         } else {
             if didComplete {
                 print("complete present")
+                state = .presenting
             } else {
                 print("cancel present")
-                self.completeCollapse(restart: false)
+                state = .showing
+                self.completeCollapse(restart: true)
             }
         }
     }
 
     func completeCollapse(restart: Bool) {
 
-        tabBarController.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-
+        expandedViewController.setNeedsStatusBarAppearanceUpdate()
         expandedViewController.view.removeFromSuperview()
         tabBarScreenshot.removeFromSuperview()
 
@@ -257,16 +324,18 @@ class NowPlaying {
 
         collapsedViewController.view.isHidden = false
 
-        // isPresented = false
-
-        // setNeedsStatusBarAppearanceUpdate()
-
         if restart {
             DispatchQueue.main.async {
-                self.movin = nil
-                self.setupExpandedView()
+                self.reset()
             }
         }
+
+    }
+
+    func reset() {
+
+        self.movin = nil
+        self.setupExpandedView()
 
     }
 

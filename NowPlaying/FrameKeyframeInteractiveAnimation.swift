@@ -7,16 +7,16 @@ import Movin
 
 public final class FrameKeyframeInteractiveAnimation: ValueAnimationCompatible {
 
-    public func beforeAnimation(_ isForward: Bool) {
+    public func beforeAnimation(_ animationDirection: AnimationDirection) {
 
-        currentValue = isForward ? fromValue : toValue
+        currentValue = animationDirection.isForward ? fromValue : toValue
 
-        animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: TimingCurve())
+        animator = UIViewPropertyAnimator(duration: animationDirection.duration, timingParameters: TimingCurve())
 
         animator.addAnimations({
 
             UIView.animateKeyframes(
-                    withDuration: 1.0,
+                    withDuration: animationDirection.duration,
                     delay: 0.0,
                     animations: {
 
@@ -28,7 +28,7 @@ public final class FrameKeyframeInteractiveAnimation: ValueAnimationCompatible {
 
                         var keyframes = self.keyframes
 
-                        if !isForward {
+                        if !animationDirection.isForward {
                             keyframes.reverse()
                         }
 
@@ -36,7 +36,7 @@ public final class FrameKeyframeInteractiveAnimation: ValueAnimationCompatible {
 
                             var duration = keyframe.duration
 
-                            if !isForward {
+                            if !animationDirection.isForward {
                                 duration = 1 - duration
                             }
 
@@ -71,7 +71,7 @@ public final class FrameKeyframeInteractiveAnimation: ValueAnimationCompatible {
                                 relativeDuration: 1 - start
                         ) {
 
-                            if isForward {
+                            if animationDirection.isForward {
                                 self.currentValue = self.toValue
                             } else {
                                 self.currentValue = self.fromValue
@@ -163,3 +163,4 @@ public final class FrameKeyframeInteractiveAnimation: ValueAnimationCompatible {
     }
 
 }
+

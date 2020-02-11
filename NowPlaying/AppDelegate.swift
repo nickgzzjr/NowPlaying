@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func applicationDidLoad() {
 
+        NowPlaying.shared = NowPlaying()
+
         let window = UIWindow(frame: UIScreen.main.bounds)
 
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
