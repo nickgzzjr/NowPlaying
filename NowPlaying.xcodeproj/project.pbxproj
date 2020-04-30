@@ -18,6 +18,7 @@
 		035DCABA23E3583F00AB62AD /* CollapsedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035DCAB923E3583F00AB62AD /* CollapsedViewController.swift */; };
 		0360763923E4C56D003585B8 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0360763823E4C56D003585B8 /* video.mp4 */; };
 		3397607D8411CF1D9686F7E6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976C30EF85EA3EACC49019 /* UIViewExtension.swift */; };
+		339763751C5EDCD475DA7850 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339761F2E5072E059A4D23DC /* NowPlayingViewController.swift */; };
 		3397684A333A175C4ECE1931 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339764DC1D8F20156840A2F4 /* ExpandedViewController.swift */; };
 		33976A46D90FFAF449CFF037 /* NowPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976E4914D27470B13D6430 /* NowPlaying.swift */; };
 		33976AB4F44C24F1963817FA /* PlayerFrameAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33976AB7B1258072EF004AE1 /* PlayerFrameAnimation.swift */; };
@@ -39,6 +40,7 @@
 		035DCAB923E3583F00AB62AD /* CollapsedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedViewController.swift; sourceTree = "<group>"; };
 		0360763823E4C56D003585B8 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		28F92CD7B749D766B0BCE23F /* Pods_NowPlaying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NowPlaying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		339761F2E5072E059A4D23DC /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		339764DC1D8F20156840A2F4 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandedViewController.swift; sourceTree = "<group>"; };
 		33976AB7B1258072EF004AE1 /* PlayerFrameAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFrameAnimation.swift; sourceTree = "<group>"; };
 		33976C30EF85EA3EACC49019 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				33976FDEB92C6ACF967159F4 /* FrameKeyframeInteractiveAnimation.swift */,
 				33976E4914D27470B13D6430 /* NowPlaying.swift */,
 				33976C30EF85EA3EACC49019 /* UIViewExtension.swift */,
+				339761F2E5072E059A4D23DC /* NowPlayingViewController.swift */,
 			);
 			path = NowPlaying;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				33976C5A813D070EF159D3C2 /* FrameKeyframeInteractiveAnimation.swift in Sources */,
 				33976A46D90FFAF449CFF037 /* NowPlaying.swift in Sources */,
 				3397607D8411CF1D9686F7E6 /* UIViewExtension.swift in Sources */,
+				339763751C5EDCD475DA7850 /* NowPlayingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

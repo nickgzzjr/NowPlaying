@@ -32,13 +32,14 @@ class TabBarController: UITabBarController {
             NowPlaying.shared.show(using: self)
             Timer.scheduledTimer(withTimeInterval: 1.1, repeats: false) { _ in
                 NowPlaying.shared.expand()
-                Timer.scheduledTimer(withTimeInterval: 1.1, repeats: false) { _ in
-                    NowPlaying.shared.collapse()
-                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                        NowPlaying.shared.hide()
-                    }
-                }
+                // Timer.scheduledTimer(withTimeInterval: 1.1, repeats: false) { _ in
+                //     NowPlaying.shared.collapse()
+                //     Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+                //         NowPlaying.shared.hide()
+                //     }
+                // }
             }
+
         }
 
     }

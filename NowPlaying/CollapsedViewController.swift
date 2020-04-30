@@ -8,21 +8,49 @@
 
 import UIKit
 
-class CollapsedViewController: UIViewController {
+class CollapsedViewController: NowPlayingViewController {
 
-    @IBOutlet weak var playerView: PlayerView!
-    @IBOutlet weak var contentView: UIView!
+    override var contentViewFrame: CGRect {
 
-    var showingVideo = true
+        CGRect(
+                x: x,
+                y: 0,
+                width: UIScreen.main.bounds.width - x,
+                height: height
+        )
 
-    deinit {
-        print("CollapsedViewController - 💥")
     }
+
+    override var playerViewFrame: CGRect {
+
+        CGRect(
+                x: x - playerViewWidth,
+                y: 0,
+                width: playerViewWidth,
+                height: height
+        )
+
+    }
+
+    var x: CGFloat {
+
+        let x: CGFloat
+
+        if NowPlaying.shared.showingVideo {
+            x = playerViewWidth
+        } else {
+            x = 0
+        }
+
+        return x
+
+    }
+
+    var playerViewWidth: CGFloat = 107
+    var height: CGFloat = 60
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .systemGray6
 
         playerView.play(URL(fileReferenceLiteralResourceName: "video.mp4"))
 
